@@ -41,6 +41,8 @@ INSTALLED_APPS = (
 
     'compressor',
     'compress',
+
+    'less',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,3 +113,6 @@ COMPRESS_CSS_FILTERS = [
 COMPRESS_JS_FILTERS = [
      'compressor.filters.jsmin.JSMinFilter'
 ]
+COMPRESS_PRECOMPILERS = (
+   ('text/less', 'lessc {infile} {outfile}'),
+)
