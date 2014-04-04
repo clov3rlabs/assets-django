@@ -38,6 +38,9 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
 
     'resources',
+
+    'compressor',
+    'compress',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -84,11 +87,27 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # by @chrux
-PROJECT_DIR = os.path.dirname(os.path.dirname(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_DIR, 'templates')
+    os.path.join(BASE_DIR, 'templates')
 )
+# Django Compressor
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+#    'django.contrib.staticfiles.finders.DefaultStorageFinder',
+#   Compressor
+    'compressor.finders.CompressorFinder',
+)
+COMPRESS_ENABLED = True
+COMPRESS_OUTPUT_DIR = ''
+
+COMPRESS_CSS_FILTERS = [
+     'compressor.filters.cssmin.CSSMinFilter'
+]
+COMPRESS_JS_FILTERS = [
+     'compressor.filters.jsmin.JSMinFilter'
+]
