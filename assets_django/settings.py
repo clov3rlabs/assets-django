@@ -43,6 +43,8 @@ INSTALLED_APPS = (
     'compress',
 
     'less',
+
+    'sass',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,4 +117,5 @@ COMPRESS_JS_FILTERS = [
 ]
 COMPRESS_PRECOMPILERS = (
    ('text/less', 'lessc {infile} {outfile}'),
+   ('text/x-sass', 'sass {infile} {outfile}'),
 )
